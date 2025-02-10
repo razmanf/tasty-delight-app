@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/theme/color.dart';
+import 'package:food_app/widgets/BackgroundWrapper.dart';
 import 'package:food_app/widgets/bottombar_item.dart';
+import '../providers/user_provider.dart';
 import 'home.dart';
+import 'cart_page.dart';
+import 'profile_page.dart';
+import 'notifications_page.dart';
+import 'favourites_page.dart';
+import 'package:provider/provider.dart';
 
 class RootApp extends StatefulWidget {
   const RootApp({Key? key}) : super(key: key);
@@ -15,16 +22,28 @@ class _RootAppState extends State<RootApp> {
 
   List<IconData> _tapIcons = [
     Icons.home_rounded,
-    Icons.explore_rounded,
+    Icons.favorite,
     Icons.shopping_cart_rounded,
+    Icons.notifications,
     Icons.person_rounded
   ];
 
-  List<Widget> _pages = [
-    HomePage(),
-    HomePage(),
-    HomePage(),
-    HomePage(),
+  // Updated _pages list with Provider
+  List<Widget> get _pages => [
+    Consumer<UserProvider>(
+      builder: (context, userProvider, _) {
+        return BackgroundWrapper(
+          child: HomePage(
+            firstName: userProvider.firstName,
+            lastName: userProvider.lastName,
+          ),
+        );
+      },
+    ),
+    BackgroundWrapper(child: const FavouritesPage()),
+    BackgroundWrapper(child: const CartPage()),
+    BackgroundWrapper(child: const NotificationsPage()),
+    BackgroundWrapper(child: const ProfilePage()),
   ];
 
   @override
@@ -49,7 +68,7 @@ class _RootAppState extends State<RootApp> {
         ),
         boxShadow: [
           BoxShadow(
-            color: shadowColor.withOpacity(0.1),
+            color: shadowColor.withValues(),
             blurRadius: .5,
             spreadRadius: .5,
             offset: Offset(0, 1),
@@ -64,7 +83,7 @@ class _RootAppState extends State<RootApp> {
           (index) => BottomBarItem(
             _tapIcons[index],
             isActive: _activeTab == index,
-            activeColor: primary,
+            activeColor: shadowColor,
             onTap: () {
               setState(() {
                 _activeTab = index;
@@ -83,6 +102,7 @@ class _RootAppState extends State<RootApp> {
         _tapIcons.length,
         (index) => _pages[index],
       ),
+
     );
   }
 }

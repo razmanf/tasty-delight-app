@@ -4,11 +4,11 @@ import 'package:food_app/widgets/custom_image.dart';
 
 import 'favorite_box.dart';
 
-class FeaturedItem extends StatelessWidget {
-  const FeaturedItem({Key? key, required this.data, this.onTap})
-      : super(key: key);
-  final data;
-  final GestureTapCallback? onTap;
+class FeatureItem extends StatelessWidget {
+  final dynamic data;
+  final VoidCallback? onTap;
+
+  const FeatureItem({Key? key, required this.data, this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

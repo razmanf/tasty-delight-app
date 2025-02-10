@@ -1,33 +1,15 @@
-buildscript {
-    ext.kotlin_version = '1.7.10'
-    repositories {
-        jcenter()
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.2.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22"
-    }
-}
-
-plugins {
-    id 'com.android.application' version '8.2.2' apply false
-    id 'org.jetbrains.kotlin.android' version '1.8.22' apply false
-}
-
-
-ext.flutterRoot = file("C:/flutter/src/flutter")  // Correct path to your Flutter SDK
-
 allprojects {
     repositories {
-        google()  // Add if not already present
-        mavenCentral()  // Add this too
+        google()
+        mavenCentral()
     }
 }
 
 rootProject.buildDir = '../build'
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
     project.evaluationDependsOn(':app')
 }
 

@@ -54,7 +54,7 @@ List populars = [
 
 List categories = [
   {"name": "Salad", "icon": FontAwesomeIcons.cloudMeatball},
-  {"name": "Burger", "icon": FontAwesomeIcons.hamburger},
+  {"name": "Burger", "icon": FontAwesomeIcons.burger},
   {"name": "Drink", "icon": FontAwesomeIcons.wineGlass},
   {"name": "Soup", "icon": Icons.rice_bowl},
   {"name": "Snack", "icon": FontAwesomeIcons.cookie},

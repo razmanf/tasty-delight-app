@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class NotificationBox extends StatelessWidget {
-  const NotificationBox({Key? key, this.number = 0, this.onTap})
-      : super(key: key);
-
   final int number;
-  final GestureTapCallback? onTap;
+  final VoidCallback? onTap;
+
+  const NotificationBox({
+    Key? key,
+    required this.number,
+    this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,36 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/theme/color.dart';
-
 import 'favorite_box.dart';
 
 class PopularItem extends StatelessWidget {
-  PopularItem({Key? key, required this.data}) : super(key: key);
-  final data;
+  final dynamic data;
+  final VoidCallback? onTap;
+
+  const PopularItem({Key? key, required this.data, this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 15),
-      height: 170,
-      width: 220,
-      child: Stack(
-        children: [
-          Positioned(
-            top: 10,
-            child: _buildItemImage(),
-          ),
-          Positioned(
-            top: 0,
-            right: 5,
-            child: FavoriteBox(
-              isFavorited: data["is_favorited"],
+    return GestureDetector( // <-- Wrap with GestureDetector
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.only(right: 15),
+        height: 170,
+        width: 220,
+        child: Stack(
+          children: [
+            Positioned(
+              top: 10,
+              child: _buildItemImage(),
             ),
-          ),
-          Positioned(
-            top: 140,
-            child: _buildItemInfo(),
-          )
-        ],
+            Positioned(
+              top: 0,
+              right: 5,
+              child: FavoriteBox(
+                isFavorited: data["is_favorited"],
+              ),
+            ),
+            Positioned(
+              top: 140,
+              child: _buildItemInfo(),
+            )
+          ],
+        ),
       ),
     );
   }
