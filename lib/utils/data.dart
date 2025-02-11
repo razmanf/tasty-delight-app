@@ -6,7 +6,7 @@ List populars = [
     "image":
         "https://images.unsplash.com/photo-1544025162-d76694265947?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8Zm9vZHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
     "is_favorited": true,
-    "price": "\Rs4000",
+    "price": "\$20.50",
     "name": "Cheesy Stake",
     "description": "Breakfast and Brunch - American - Sandwich",
     "sources": "Egg - Salad",
